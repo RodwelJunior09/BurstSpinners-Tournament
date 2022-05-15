@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4991322377670723564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4991322377670723565}
+  - component: {fileID: 4991322377670723562}
+  m_Layer: 0
+  m_Name: CharacterNavegation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4991322377670723565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991322377670723564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4991322377670723562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991322377670723564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf1b036b8d85684d97b69596431851d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allCharacters:
+  - {fileID: 21300000, guid: 6d4b5cec7bc1a4643993dc0ffe239918, type: 3}
+  - {fileID: 21300000, guid: d460e69bce05bae4f82fe4812f60bb0f, type: 3}
+  - {fileID: 21300000, guid: cfef2b254ccc63243a91f59e5f028a2b, type: 3}
+  - {fileID: 21300000, guid: 422ab87ad2575c544bf3330015b62508, type: 3}
+  - {fileID: 21300000, guid: 894920ffbfbd63440b0bf2bc2ccec3f0, type: 3}
+  - {fileID: 21300000, guid: 0e557bd8e6eb5d84092032eec043cddf, type: 3}
+  - {fileID: 21300000, guid: ed3d97a04179f2f4993c44d26b71f996, type: 3}
+  - {fileID: 21300000, guid: 9cd750ef2d4a2114d8e07aa0ede4c656, type: 3}
+  - {fileID: 21300000, guid: 80f79a1edd1994540b050fd878f9cd30, type: 3}
+  - {fileID: 21300000, guid: 0d032272d57519143b6a45ea3fdc6cec, type: 3}
+  characterRendered: {fileID: 0}
+  adsPanel: {fileID: 0}

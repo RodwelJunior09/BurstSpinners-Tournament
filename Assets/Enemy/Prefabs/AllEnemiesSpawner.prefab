@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6043163810660388011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6043163810660388010}
+  - component: {fileID: 6043163810660388009}
+  m_Layer: 0
+  m_Name: AllEnemiesSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6043163810660388010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6043163810660388011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6043163810660388009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6043163810660388011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ab69542178094cb1038426e468c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemiesInTournament:
+  - {fileID: 1170421042382462039, guid: f2610c90f611400428bd1bd49bae241c, type: 3}
+  - {fileID: 1699337002508922176, guid: 84feeb70921b7254c95b723939103aa6, type: 3}
+  - {fileID: 9204031269681976016, guid: 8d4e0ea4b84e31943940cf6e5b8326ad, type: 3}
+  - {fileID: 876622182618222935, guid: 21649bf095fc1e242ac947a9e63f7dfc, type: 3}
+  - {fileID: 7619975996057801442, guid: a5450ed2d743a1b47aa1f3ff86e26f27, type: 3}
+  - {fileID: 5888843025504865346, guid: 0e2550b675464e147af274c9e73248e8, type: 3}
+  - {fileID: 1107213381079936294, guid: bf725087d1a068040920ec8a05958a3d, type: 3}
+  - {fileID: 9112545074027466519, guid: 9ad423283cacda34ca6faf3c269a65e4, type: 3}
+  - {fileID: 4990321897690183529, guid: 6203a7b4903bfa44cbc25552f54b037d, type: 3}
+  - {fileID: 3160268213069488839, guid: 43d3a95acb789a9439f52331addb627c, type: 3}
+  - {fileID: 9061000943553605034, guid: b102dd6bdb0bfb2419d3fa2b6734c1a7, type: 3}
+  - {fileID: 2505287060800510453, guid: 91162db810b8640419f61532576d72d4, type: 3}
+  - {fileID: 4273546040224280169, guid: ae5ee896438918645a598393fdb00b14, type: 3}

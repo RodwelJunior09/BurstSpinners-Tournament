@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: f79d16b72f528a849ba4f5a159c3873a
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 9173141094384008543
+    second: Base|AttackRingAction
+  - first:
+      74: 334493443028114874
+    second: Base|AttackRingAction.001
+  - first:
+      74: -5791511809027754855
+    second: Base|BaseAction
+  - first:
+      74: -8409495992120588709
+    second: Base|DefenseRingAction
+  - first:
+      74: -7286995181545838024
+    second: Base|IconBaseAction
+  - first:
+      74: 6977030616240892678
+    second: AttackRing|AttackRingAction
+  - first:
+      74: 6948036166803852154
+    second: AttackRing|AttackRingAction.001
+  - first:
+      74: 6593978704964395826
+    second: AttackRing|BaseAction
+  - first:
+      74: 6969719434051258649
+    second: AttackRing|DefenseRingAction
+  - first:
+      74: 6716512819635810207
+    second: AttackRing|IconBaseAction
+  - first:
+      74: 4078889172304843461
+    second: DefenseRing|AttackRingAction
+  - first:
+      74: -5214507967612381953
+    second: DefenseRing|AttackRingAction.001
+  - first:
+      74: -3773964148131759558
+    second: DefenseRing|BaseAction
+  - first:
+      74: -754016949933461696
+    second: DefenseRing|DefenseRingAction
+  - first:
+      74: 8358155986758439474
+    second: DefenseRing|IconBaseAction
+  - first:
+      74: -3952396391276236469
+    second: IconBase|AttackRingAction
+  - first:
+      74: -3071008222741831337
+    second: IconBase|AttackRingAction.001
+  - first:
+      74: -1174014746272460516
+    second: IconBase|BaseAction
+  - first:
+      74: 8054982736191558702
+    second: IconBase|DefenseRingAction
+  - first:
+      74: 6024372017733098858
+    second: IconBase|IconBaseAction
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

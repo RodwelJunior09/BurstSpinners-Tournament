@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HomePage.unity
+    guid: 49f1c34e16999f64cb1659ae2e141e41
+  - enabled: 1
+    path: Assets/Scenes/ModeSelection.unity
+    guid: 6a495e644caf19246bdb9039fca7f3db
+  - enabled: 1
+    path: Assets/Scenes/SpinnerSelect.unity
+    guid: e222a2d353426434681176fe96e9125f
+  - enabled: 1
+    path: Assets/Scenes/TournamentSelect.unity
+    guid: d3717e9631d772147b744578dc13985d
+  - enabled: 1
+    path: Assets/Scenes/TournamentScenes/Tournament#1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/TournamentScenes/Tournament#2.unity
+    guid: 8bb344823049e5342a37ab27d757c410
+  - enabled: 1
+    path: Assets/Scenes/TournamentScenes/Tournament#3.unity
+    guid: 1e7e369c5884b6f4e8b44af27c723f72
+  - enabled: 1
+    path: Assets/Scenes/TournamentScenes/Tournament#4.unity
+    guid: 82b000049158bfc4dab006a081e6f2f4
+  - enabled: 1
+    path: Assets/Scenes/LoseScreen.unity
+    guid: a080da05290cf2844a143d68ab28f355
+  - enabled: 1
+    path: Assets/Scenes/WinScenes/WinScreen#1.unity
+    guid: 59cafad468c156b44a478f76c22bd6b2
+  - enabled: 1
+    path: Assets/Scenes/WinScenes/WinScreen#2.unity
+    guid: ccae4ec793437f94b9458f84de03fab0
+  - enabled: 1
+    path: Assets/Scenes/WinScenes/WinScreen#3.unity
+    guid: 01687935d6455a84385fa7d7a4e599e3
+  - enabled: 1
+    path: Assets/Scenes/WinScenes/WinScreen#4.unity
+    guid: a85c3ad263dc54b4e8879b45f89a60a0
+  - enabled: 1
+    path: Assets/Scenes/WinScenes/SurvivalWinScreen.unity
+    guid: 931efdf03fa9241458bce9c42ff6d58a
+  m_configObjects: {}
