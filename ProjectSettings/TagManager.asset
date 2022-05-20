@@ -18,6 +18,7 @@ TagManager:
   - Wall#2
   - Wall#3
   - Wall#4
+  - Border_Selection
   layers:
   - Default
   - TransparentFX

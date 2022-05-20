@@ -9,8 +9,12 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("survivor_mode", 1);
     }
 
+    public void SetBRMode(){
+        PlayerPrefs.SetInt("br_mode", 1);
+    }
+
     public void SetTournamentMode() {
-        PlayerPrefs.SetInt("survivor_mode", 0);
+        PlayerPrefs.SetInt("tournament_mode", 1);
     }
 
     public IEnumerator WinSurvivalMode(){
@@ -58,7 +62,10 @@ public class LevelManager : MonoBehaviour
     }
 
     void DeleteMatchData(){
+        PlayerPrefs.DeleteKey("br_mode");
         PlayerPrefs.DeleteKey("tourmamentId");
+        PlayerPrefs.DeleteKey("survivor_mode");
+        PlayerPrefs.DeleteKey("tournament_mode");
         PlayerPrefs.DeleteKey("player_won_match");
         PlayerPrefs.DeleteKey("rounds_won_by_player");
         PlayerPrefs.DeleteKey("rounds_won_by_enemy");
