@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8206284564913276436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8206284564913276437}
+  - component: {fileID: 8206284564913276438}
+  m_Layer: 0
+  m_Name: TournamentSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8206284564913276437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206284564913276436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8206284564913276438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206284564913276436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b02fabf6d421eb4cb9da589e7fa0561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageRender: {fileID: 0}
+  _allTournamentSprites:
+  - {fileID: 21300000, guid: ca6bf62eb62a15a408fbeaaa37b62379, type: 3}
+  - {fileID: 21300000, guid: bb8d27cac78a6df4a94bff6bd049fd03, type: 3}
+  - {fileID: 21300000, guid: e06a176f5ef8cd94fb2afcb8bb8db5ae, type: 3}
+  - {fileID: 21300000, guid: c42bb99490f71f441a48cd3dd95bfd60, type: 3}

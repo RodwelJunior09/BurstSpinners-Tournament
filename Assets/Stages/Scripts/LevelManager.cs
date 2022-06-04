@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator LoadWinScreen()
     {
-        switch (PlayerPrefs.GetInt("tourmamentId"))
+        switch (PlayerPrefs.GetInt("tournamentId"))
         {
             case 1:
                 yield return new WaitForSeconds(2);
@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
 
     void DeleteMatchData(){
         PlayerPrefs.DeleteKey("br_mode");
-        PlayerPrefs.DeleteKey("tourmamentId");
+        PlayerPrefs.DeleteKey("tournamentId");
         PlayerPrefs.DeleteKey("survivor_mode");
         PlayerPrefs.DeleteKey("tournament_mode");
         PlayerPrefs.DeleteKey("player_won_match");
@@ -78,7 +78,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator TournamentManager()
     {
-        switch (PlayerPrefs.GetInt("tourmamentId"))
+        switch (PlayerPrefs.GetInt("tournamentId"))
         {
             case 1:
                 yield return new WaitForSeconds(3);

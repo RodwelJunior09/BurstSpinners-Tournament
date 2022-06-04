@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CharacterNavegation : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class CharacterNavegation : MonoBehaviour
 
     [Header("Panels")]
     [SerializeField] GameObject adsPanel;
+    [SerializeField] GameObject ads_br_panel;
     [SerializeField] GameObject blockPanel;
     [SerializeField] GameObject br_blockPanel;
 
@@ -21,11 +24,19 @@ public class CharacterNavegation : MonoBehaviour
     [SerializeField] Button unlockBtn;
     [SerializeField] Button continueBtn;
 
+    [Header("Button BR team")]
+    [SerializeField] Button adUnlockerBrButton;
+    [SerializeField] Button continueBrModeBtn;
+    [SerializeField] Button addToTheTeamButton;
+
     int count = 0;
     Image imageRenderer;
-    int team_member = 0;
+    int team_member_count = 0;
     Sprite nothingSprite;
+    int currentMemberId;
+    SoundFxManager _soundFxManager;
     GameObject[] allBorderSelectors;
+    List<int> teamMembersId = new List<int>();
 
     private void OnEnable() {
         if (PlayerPrefs.GetInt("br_mode") == 1)
@@ -43,9 +54,11 @@ public class CharacterNavegation : MonoBehaviour
             this.imageRenderer = characterRendered.GetComponent<Image>();
         imageRenderer.sprite = allCharacters[0];
         CheckIfUnlocked(count);
+        _soundFxManager = FindObjectOfType<SoundFxManager>();
     }
 
     private void Update() {
+        HasAllTeamMembers();
         CheckIfUnlocked(count);
     }
 
@@ -82,6 +95,26 @@ public class CharacterNavegation : MonoBehaviour
         }
     }
 
+    void HasAllTeamMembers(){
+        if (PlayerPrefs.GetInt("br_mode") == 1)
+        {
+            if (teamMembersId.Count() == 3)
+            {
+                if (addToTheTeamButton.gameObject.activeInHierarchy)
+                    addToTheTeamButton.gameObject.SetActive(false);
+                if (!continueBrModeBtn.gameObject.activeInHierarchy)
+                    continueBrModeBtn.gameObject.SetActive(true);
+            }
+            else
+            {
+                if (!addToTheTeamButton.gameObject.activeInHierarchy)
+                    addToTheTeamButton.gameObject.SetActive(true);
+                if (continueBrModeBtn.gameObject.activeInHierarchy)
+                    continueBrModeBtn.gameObject.SetActive(false);
+            }
+        }
+    }
+
     void CheckIfUnlocked(int count){
         int isUnlocked = PlayerPrefs.GetInt($"player_{count + 1}_unlocked");
         if (isUnlocked == 1)
@@ -106,64 +139,78 @@ public class CharacterNavegation : MonoBehaviour
         PlayerPrefs.SetInt("enemyId", 0);
     }
 
-    // Use this function for the win tournament, and for loading the correct scene.
-    public void SaveTournamentId()
-    {
-        if (!PlayerPrefs.HasKey("tourmamentId"))
-            PlayerPrefs.SetInt("tourmamentId", count + 1);
-    }
-
     public int GetCharacterCount(){
         return count;
     }
 
     // Show the ads panel
     public void ShowAdsPanel(){
-        adsPanel.gameObject.SetActive(true);
+        if (PlayerPrefs.GetInt("br_mode") == 1)
+            ads_br_panel.gameObject.SetActive(true);
+        else
+            adsPanel.gameObject.SetActive(true);
     }
 
     // Remove the ads panel
     public void GoBack(){
-        adsPanel.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("br_mode") == 1)
+            ads_br_panel.gameObject.SetActive(false);
+        else
+            adsPanel.gameObject.SetActive(false);
     }
 
     public void DisableBlockPanel(){
         if (PlayerPrefs.GetInt("br_mode") == 1)
+        {
             br_blockPanel.gameObject.SetActive(false);
+            adUnlockerBrButton.gameObject.SetActive(false);
+        }
         else
+        {
             blockPanel.gameObject.SetActive(false);
-        unlockBtn.gameObject.SetActive(false);
-        continueBtn.gameObject.SetActive(true);
+            unlockBtn.gameObject.SetActive(false);
+        }
     }
 
+    // Disable the add team and continue buttons, and enable ad unlock button
     public void ShowBlockPanel(){
         if (PlayerPrefs.GetInt("br_mode") == 1)
+        {
             br_blockPanel.gameObject.SetActive(true);
+            adUnlockerBrButton.gameObject.SetActive(true);
+        }
         else
+        {
             blockPanel.gameObject.SetActive(true);
-        unlockBtn.gameObject.SetActive(true);
-        continueBtn.gameObject.SetActive(false);
+            unlockBtn.gameObject.SetActive(true);
+        }
     }
 
     public void AddCharacterToTeam(){
-        if (team_member < 3)
+        if (team_member_count < 3)
         {
-            allBorderSelectors[team_member].SetActive(false);
-            allTeamRenders[team_member].GetComponentInChildren<Image>().sprite = allCharacters[count];
-            team_member++;
-            if (team_member < allBorderSelectors.Length)
-                allBorderSelectors[team_member].SetActive(true);
+            _soundFxManager.PlayAcceptSoundFx();
+            allBorderSelectors[team_member_count].SetActive(false);
+            allTeamRenders[team_member_count].GetComponentInChildren<Image>().sprite = allCharacters[count];
+            team_member_count++;
+            PlayerPrefs.SetInt($"team_member_{team_member_count}", count);
+            teamMembersId.Add(count);
+            if (team_member_count < allBorderSelectors.Length)
+                allBorderSelectors[team_member_count].SetActive(true);
         }
     }
 
     public void RemoveCharacterFromTeam(){
-        if (team_member > 0)
+        if (team_member_count > 0)
         {
-            team_member--;
-            allTeamRenders[team_member].GetComponentInChildren<Image>().sprite = nothingSprite;
-            allBorderSelectors[team_member].SetActive(true);
-            if (team_member < 2)
-                allBorderSelectors[team_member + 1].SetActive(false);
+            team_member_count--;
+            _soundFxManager.PlayDeclineSoundFx();
+            allTeamRenders[team_member_count].GetComponentInChildren<Image>().sprite = nothingSprite;
+            allBorderSelectors[team_member_count].SetActive(true);
+            PlayerPrefs.DeleteKey($"team_member_{team_member_count}");
+            teamMembersId.Remove(count);
+            if (team_member_count < 2)
+                allBorderSelectors[team_member_count + 1].SetActive(false);
         }
     }
 }
