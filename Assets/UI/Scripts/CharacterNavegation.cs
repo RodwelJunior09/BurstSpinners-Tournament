@@ -117,6 +117,7 @@ public class CharacterNavegation : MonoBehaviour
 
     void CheckIfUnlocked(int count){
         int isUnlocked = PlayerPrefs.GetInt($"player_{count + 1}_unlocked");
+        Debug.Log(isUnlocked);
         if (isUnlocked == 1)
             DisableBlockPanel();
         else
@@ -164,6 +165,7 @@ public class CharacterNavegation : MonoBehaviour
         {
             br_blockPanel.gameObject.SetActive(false);
             adUnlockerBrButton.gameObject.SetActive(false);
+            addToTheTeamButton.gameObject.SetActive(true);
         }
         else
         {
@@ -178,6 +180,7 @@ public class CharacterNavegation : MonoBehaviour
         {
             br_blockPanel.gameObject.SetActive(true);
             adUnlockerBrButton.gameObject.SetActive(true);
+            addToTheTeamButton.gameObject.SetActive(false);
         }
         else
         {

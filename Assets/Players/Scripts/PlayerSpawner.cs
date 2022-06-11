@@ -6,31 +6,22 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] GameObject[] allPlayers;
 
     GameObject playerSpawn;
-    [SerializeField] GameObject[] teamSpawn;
+    GameObject[] teamSpawn;
+
+    int count = 0;
 
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("br_mode") != 1) { SpawnPlayer(); }
-        // else { SpawnTeamPlayer(0); }
+        SpawnPlayer();
         StopSpinning();
-        SetPlayerTeamIds();
     }
 
     int GetPlayerChoice()
     {
-        return PlayerPrefs.GetInt("playerId");
-    }
-
-    void SetPlayerTeamIds(){
-        if (PlayerPrefs.GetInt("br_mode") == 1)
-        {
-            for (int count = 0; count < 3; count++)
-            {
-                int member_id = PlayerPrefs.GetInt($"team_member_{count}");
-                Debug.Log(member_id);
-                // teamSpawn[count] = allPlayers[member_id];
-            }
-        }
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+            return PlayerPrefs.GetInt("playerId");
+        else 
+            return PlayerPrefs.GetInt($"team_member_{count}");
     }
 
     void SpawnPlayer()
@@ -39,18 +30,18 @@ public class PlayerSpawner : MonoBehaviour
         playerSpawn.transform.parent = transform;
     }
 
-    void SpawnTeamPlayer(int member_count){
-        Debug.Log(member_count);
-        // int member_id = teamSpawn[member_count];
-        // playerSpawn = Instantiate(allPlayers[member_id], transform.position, transform.rotation);
-        // playerSpawn.transform.parent = transform;
+    public void SpawnTeamPlayer(int count){
+        int member_id = PlayerPrefs.GetInt($"team_member_{count}");
+        Debug.Log(member_id);
+        playerSpawn = Instantiate(allPlayers[member_id], transform.position, transform.rotation);
+        playerSpawn.transform.parent = transform;
     }
 
     void StopSpinning()
     {
         if (stopSpinCharacter)
         {
-            playerSpawn.GetComponent<Player>().stopSpinning = true;
+            playerSpawn.GetComponent<PlayerHealth>().SetToStopSpin(true);
             playerSpawn.GetComponent<Animator>().SetBool("IsStopping", true); // Decrease all the spin energy
         }
     }

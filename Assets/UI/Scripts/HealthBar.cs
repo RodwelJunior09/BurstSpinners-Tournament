@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    Player player;
+    PlayerHealth healthPlayer;
     TextMeshProUGUI textUI;
     private void Start() {
-        player = FindObjectOfType<Player>();
+        healthPlayer = FindObjectOfType<PlayerHealth>();
     
         textUI = this.GetComponent<TextMeshProUGUI>();
 
-        textUI.text = $"HP: {player.ReturnHealth()}";
+        textUI.text = $"HP: {healthPlayer.ReturnHealth()}";
     }
 
     private void Update() 
     {
-        if (player.ReturnHealth() >= 0)
-            textUI.text = $"HP: {player.ReturnHealth()}";
+        if (healthPlayer.ReturnHealth() >= 0)
+            textUI.text = $"HP: {healthPlayer.ReturnHealth()}";
         else
             textUI.text = $"HP: {0}";
     }

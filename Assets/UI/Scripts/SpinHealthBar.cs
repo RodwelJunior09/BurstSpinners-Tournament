@@ -4,21 +4,21 @@ using UnityEngine.UI;
 
 public class SpinHealthBar : MonoBehaviour
 {
-    Player player;
     Slider slider;
+    PlayerHealth healthPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
         slider = this.GetComponent<Slider>();
+        healthPlayer = FindObjectOfType<PlayerHealth>();
 
-        slider.maxValue = Convert.ToSingle(player.ReturnSpinHealth());
+        slider.maxValue = Convert.ToSingle(healthPlayer.ReturnSpinHealth());
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = Convert.ToSingle(player.ReturnSpinHealth());
+        slider.value = Convert.ToSingle(healthPlayer.ReturnSpinHealth());
     }
 }

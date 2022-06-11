@@ -23,7 +23,8 @@ public class LoseCollider : MonoBehaviour
             {
                 objectCollided = true;
                 player.IncreaseAmountOfWins();
-                StartCoroutine(levelManager.TournamentManager());
+                if (PlayerPrefs.GetInt("br_mode") != 1)
+                    StartCoroutine(levelManager.TournamentManager());
             }
         }
         else if (otherCollider.gameObject.GetComponent<Player>())
@@ -32,7 +33,8 @@ public class LoseCollider : MonoBehaviour
             {
                 objectCollided = true;
                 enemyAI.IncreaseRoundWon();
-                StartCoroutine(levelManager.TournamentManager());
+                if (PlayerPrefs.GetInt("br_mode") != 1)
+                    StartCoroutine(levelManager.TournamentManager());
             }
         }
     }

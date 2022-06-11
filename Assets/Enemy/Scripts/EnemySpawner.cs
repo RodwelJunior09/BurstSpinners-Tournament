@@ -16,5 +16,11 @@ public class EnemySpawner : MonoBehaviour
         enemyAI.transform.parent = transform;
     }
 
+    public void PutAnotherEnemyTeam(){
+        int current_enemy_id = PlayerPrefs.GetInt("enemyId");
+        PlayerPrefs.SetInt("enemyId", current_enemy_id + 1);
+        SpawnEnemy(PlayerPrefs.GetInt("enemyId"));
+    }
+
     public int GetEnemyCount => _enemiesInTournament.Length;
 }

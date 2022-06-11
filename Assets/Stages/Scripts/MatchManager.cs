@@ -15,8 +15,11 @@ public class MatchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerWonTheTournament();
-        PlayerWonSurvivalMode();
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+        {
+            PlayerWonTheTournament();
+            PlayerWonSurvivalMode();
+        }
     }
 
     void PlayerWonSurvivalMode(){

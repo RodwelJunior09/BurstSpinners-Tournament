@@ -222,6 +222,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 91152017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &466110629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466110631}
+  - component: {fileID: 466110630}
+  m_Layer: 0
+  m_Name: BRTeamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &466110630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466110629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac4e91e79f368e43b94153cf2ee4ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &466110631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466110629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549143635
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +898,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SurvivorEnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6043163810660388011, guid: 29041e34863cab947b14f2725b0b9cb4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29041e34863cab947b14f2725b0b9cb4, type: 3}
 --- !u!114 &1103744070 stripped
@@ -1262,12 +1310,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1413842512}
   m_Layer: 0
-  m_Name: TeamEnemySpawners
+  m_Name: MultipleEnemySpawners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1413842512
 Transform:
   m_ObjectHideFlags: 0
@@ -1997,6 +2045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TournamentEnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765541482260568152, guid: 4e85f1b450a8e7d40b0e548528210ad8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4765541482260568153, guid: 4e85f1b450a8e7d40b0e548528210ad8,
         type: 3}

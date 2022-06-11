@@ -147,7 +147,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void EnemyDebuffs(Player player)
+    private void EnemyDebuffs(PlayerHealth player)
     {
         if (habilityActivated)
         {
@@ -196,6 +196,8 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public bool DoesEnemyStopped => isStopped;
+
     public void EnemyDestroyed()
     {
         if (ReturnEnemyHealth() <= 0)
@@ -205,7 +207,8 @@ public class EnemyAI : MonoBehaviour
             isStopped = true;
             agent.isStopped = true;
             animator.SetBool("IsDestroyed", true);
-            StartCoroutine(levelManager.TournamentManager());
+            if (PlayerPrefs.GetInt("br_mode") != 1)
+                StartCoroutine(levelManager.TournamentManager());
         }
     }
 
@@ -218,14 +221,15 @@ public class EnemyAI : MonoBehaviour
             isStopped = true;
             agent.isStopped = true;
             animator.SetBool("IsStopping", true);
-            StartCoroutine(levelManager.TournamentManager());
+            if (PlayerPrefs.GetInt("br_mode") != 1)
+                StartCoroutine(levelManager.TournamentManager());
         }
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.GetComponent<Player>())
+        if (other.gameObject.GetComponent<PlayerHealth>())
         {
-            EnemyDebuffs(other.gameObject.GetComponent<Player>());
+            EnemyDebuffs(other.gameObject.GetComponent<PlayerHealth>());
             _clashSoundFx.Play();
         }
         var sparks = Instantiate(_particlesEffects, other.GetContact(0).point, Quaternion.identity) as GameObject;

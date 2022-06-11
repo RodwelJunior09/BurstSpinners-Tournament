@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
@@ -10,19 +9,10 @@ public class SpawnerManager : MonoBehaviour
     // Deactivate any spawner that doesn't relate to the mode selected
     private void OnEnable() {
         if (PlayerPrefs.GetInt("survivor_mode") == 1)
-        {
-            _enemyTeamsSpawners.gameObject.SetActive(false);
-            _tournamentEnemySpawner.gameObject.SetActive(false);
-        }
-        else if (PlayerPrefs.GetInt("br_mode") == 1)
-        {
-            _survivorEnemySpawner.gameObject.SetActive(false);
-            _tournamentEnemySpawner.gameObject.SetActive(false);
-        }
-        else
-        {
-            _enemyTeamsSpawners.gameObject.SetActive(false);
-            _survivorEnemySpawner.gameObject.SetActive(false);
-        }
+            _survivorEnemySpawner.gameObject.SetActive(true);
+        if (PlayerPrefs.GetInt("br_mode") == 1)
+            _enemyTeamsSpawners.gameObject.SetActive(true);
+        if (PlayerPrefs.GetInt("tournament_mode") == 1)
+            _tournamentEnemySpawner.gameObject.SetActive(true);
     }
 }

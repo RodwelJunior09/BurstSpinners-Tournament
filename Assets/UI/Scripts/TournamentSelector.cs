@@ -21,8 +21,6 @@ public class TournamentSelector : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("tournamentId"))
             PlayerPrefs.SetInt("tournamentId", count + 1);
-        
-        Debug.Log(PlayerPrefs.GetInt("tournamentId"));
     }
 
     public void NextCharacterButton()
