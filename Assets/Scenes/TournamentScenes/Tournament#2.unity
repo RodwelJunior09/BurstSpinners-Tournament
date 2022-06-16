@@ -1177,6 +1177,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7467859775079957823, guid: 8b13de16a43508d4b8a86f2300873eae,
+        type: 3}
+      propertyPath: _enemiesInTournament.Array.data[0]
+      value: 
+      objectReference: {fileID: 9204031269681976016, guid: 8d4e0ea4b84e31943940cf6e5b8326ad,
+        type: 3}
+    - target: {fileID: 7467859775079957823, guid: 8b13de16a43508d4b8a86f2300873eae,
+        type: 3}
+      propertyPath: _enemiesInTournament.Array.data[1]
+      value: 
+      objectReference: {fileID: 3160268213069488839, guid: 43d3a95acb789a9439f52331addb627c,
+        type: 3}
+    - target: {fileID: 7467859775079957823, guid: 8b13de16a43508d4b8a86f2300873eae,
+        type: 3}
+      propertyPath: _enemiesInTournament.Array.data[2]
+      value: 
+      objectReference: {fileID: 9061000943553605034, guid: b102dd6bdb0bfb2419d3fa2b6734c1a7,
+        type: 3}
     - target: {fileID: 7467859775345169613, guid: 8b13de16a43508d4b8a86f2300873eae,
         type: 3}
       propertyPath: m_RootOrder

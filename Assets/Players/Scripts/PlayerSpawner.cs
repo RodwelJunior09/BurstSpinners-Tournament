@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour
     GameObject playerSpawn;
     GameObject[] teamSpawn;
 
-    int initialCount = 0;
+    int count_member = 1;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class PlayerSpawner : MonoBehaviour
         if (PlayerPrefs.GetInt("br_mode") != 1)
             return PlayerPrefs.GetInt("playerId");
         else 
-            return PlayerPrefs.GetInt($"team_member_{initialCount}");
+            return PlayerPrefs.GetInt($"team_member_{count_member}");
     }
 
     void SpawnPlayer()

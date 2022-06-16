@@ -9,10 +9,16 @@ public class EnemyHealthUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyAI = FindObjectOfType<EnemyAI>();
-        textUI = this.GetComponent<TextMeshProUGUI>();
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+        {
+            enemyAI = FindObjectOfType<EnemyAI>();
+            textUI = this.GetComponent<TextMeshProUGUI>();
 
-        textUI.text = $"HP: {enemyAI.ReturnEnemyHealth()}";
+            textUI.text = $"HP: {enemyAI.ReturnEnemyHealth()}";
+        }
+        else {
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

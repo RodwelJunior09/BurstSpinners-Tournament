@@ -117,7 +117,6 @@ public class CharacterNavegation : MonoBehaviour
 
     void CheckIfUnlocked(int count){
         int isUnlocked = PlayerPrefs.GetInt($"player_{count + 1}_unlocked");
-        Debug.Log(isUnlocked);
         if (isUnlocked == 1)
             DisableBlockPanel();
         else

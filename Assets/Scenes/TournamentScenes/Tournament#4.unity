@@ -578,6 +578,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7467859775079957823, guid: 8b13de16a43508d4b8a86f2300873eae,
+        type: 3}
+      propertyPath: _enemiesInTournament.Array.data[0]
+      value: 
+      objectReference: {fileID: 1107213381079936294, guid: bf725087d1a068040920ec8a05958a3d,
+        type: 3}
+    - target: {fileID: 7467859775079957823, guid: 8b13de16a43508d4b8a86f2300873eae,
+        type: 3}
+      propertyPath: _enemiesInTournament.Array.data[1]
+      value: 
+      objectReference: {fileID: 4273546040224280169, guid: ae5ee896438918645a598393fdb00b14,
+        type: 3}
+    - target: {fileID: 7467859775079957823, guid: 8b13de16a43508d4b8a86f2300873eae,
+        type: 3}
+      propertyPath: _enemiesInTournament.Array.data[2]
+      value: 
+      objectReference: {fileID: 5888843025504865346, guid: 0e2550b675464e147af274c9e73248e8,
+        type: 3}
     - target: {fileID: 7467859775345169613, guid: 8b13de16a43508d4b8a86f2300873eae,
         type: 3}
       propertyPath: m_RootOrder
