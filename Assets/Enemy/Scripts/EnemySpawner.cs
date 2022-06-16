@@ -4,10 +4,13 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] _enemiesInTournament;
-
+    int current_enemy_id = 0;
     private void Awake()
     {
-        SpawnEnemy(PlayerPrefs.GetInt("enemyId"));
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+            SpawnEnemy(PlayerPrefs.GetInt("enemyId"));
+        else
+            SpawnEnemy(current_enemy_id);
     }
 
     void SpawnEnemy(int index)
@@ -17,9 +20,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void PutAnotherEnemyTeam(){
-        int current_enemy_id = PlayerPrefs.GetInt("enemyId");
-        PlayerPrefs.SetInt("enemyId", current_enemy_id + 1);
-        SpawnEnemy(PlayerPrefs.GetInt("enemyId"));
+        if (current_enemy_id < GetEnemyCount)
+        {
+            current_enemy_id++;
+            SpawnEnemy(current_enemy_id);
+        }
     }
 
     public int GetEnemyCount => _enemiesInTournament.Length;

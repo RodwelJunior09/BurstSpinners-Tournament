@@ -31,7 +31,7 @@ public class CharacterNavegation : MonoBehaviour
 
     int count = 0;
     Image imageRenderer;
-    int team_member_count = 0;
+    int member_count = 0;
     Sprite nothingSprite;
     int currentMemberId;
     SoundFxManager _soundFxManager;
@@ -165,7 +165,6 @@ public class CharacterNavegation : MonoBehaviour
         {
             br_blockPanel.gameObject.SetActive(false);
             adUnlockerBrButton.gameObject.SetActive(false);
-            addToTheTeamButton.gameObject.SetActive(true);
         }
         else
         {
@@ -179,8 +178,10 @@ public class CharacterNavegation : MonoBehaviour
         if (PlayerPrefs.GetInt("br_mode") == 1)
         {
             br_blockPanel.gameObject.SetActive(true);
-            adUnlockerBrButton.gameObject.SetActive(true);
-            addToTheTeamButton.gameObject.SetActive(false);
+            if (!adUnlockerBrButton.gameObject.activeInHierarchy)
+                adUnlockerBrButton.gameObject.SetActive(true);
+            if (addToTheTeamButton.gameObject.activeInHierarchy)
+                addToTheTeamButton.gameObject.SetActive(false);
         }
         else
         {
@@ -190,30 +191,30 @@ public class CharacterNavegation : MonoBehaviour
     }
 
     public void AddCharacterToTeam(){
-        if (team_member_count < 3)
+        if (member_count < 3)
         {
             _soundFxManager.PlayAcceptSoundFx();
-            allBorderSelectors[team_member_count].SetActive(false);
-            allTeamRenders[team_member_count].GetComponentInChildren<Image>().sprite = allCharacters[count];
-            team_member_count++;
-            PlayerPrefs.SetInt($"team_member_{team_member_count}", count);
+            allBorderSelectors[member_count].SetActive(false);
+            allTeamRenders[member_count].GetComponentInChildren<Image>().sprite = allCharacters[count];
+            member_count++;
+            PlayerPrefs.SetInt($"team_member_{member_count}", count);
             teamMembersId.Add(count);
-            if (team_member_count < allBorderSelectors.Length)
-                allBorderSelectors[team_member_count].SetActive(true);
+            if (member_count < allBorderSelectors.Length)
+                allBorderSelectors[member_count].SetActive(true);
         }
     }
 
     public void RemoveCharacterFromTeam(){
-        if (team_member_count > 0)
+        if (member_count > 0)
         {
-            team_member_count--;
+            member_count--;
             _soundFxManager.PlayDeclineSoundFx();
-            allTeamRenders[team_member_count].GetComponentInChildren<Image>().sprite = nothingSprite;
-            allBorderSelectors[team_member_count].SetActive(true);
-            PlayerPrefs.DeleteKey($"team_member_{team_member_count}");
+            allTeamRenders[member_count].GetComponentInChildren<Image>().sprite = nothingSprite;
+            allBorderSelectors[member_count].SetActive(true);
+            PlayerPrefs.DeleteKey($"team_member_{member_count}");
             teamMembersId.Remove(count);
-            if (team_member_count < 2)
-                allBorderSelectors[team_member_count + 1].SetActive(false);
+            if (member_count < 2)
+                allBorderSelectors[member_count + 1].SetActive(false);
         }
     }
 }

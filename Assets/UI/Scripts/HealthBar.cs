@@ -20,4 +20,8 @@ public class HealthBar : MonoBehaviour
         else
             textUI.text = $"HP: {0}";
     }
+
+    public void RestoreHealthBar(){
+        healthPlayer = FindObjectOfType<PlayerHealth>();
+    }
 }

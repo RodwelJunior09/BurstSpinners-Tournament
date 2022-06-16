@@ -49,6 +49,10 @@ public class PowerEffects : MonoBehaviour
         StartCoroutine(CoolDownHability());
     }
 
+    // public void FindPowerEffect(){
+
+    // }
+
     public void PlayerBuffs()
     {
         switch (_particleFx.tag.ToLower())

@@ -11,4 +11,9 @@ public class InicializeCamera : MonoBehaviour
         this.virtualCamera = GetComponent<CinemachineVirtualCamera>();
         virtualCamera.LookAt = player.transform;
     }
+
+    public void ChangeLookUpCamera(){
+        this.player = FindObjectOfType<Player>();
+        virtualCamera.LookAt = player.transform;
+    }
 }

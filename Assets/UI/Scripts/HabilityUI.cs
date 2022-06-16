@@ -52,4 +52,8 @@ public class HabilityUI : MonoBehaviour
             _textComponent.text = $"{Mathf.FloorToInt(coolDownTime)}";
         }
     }
+
+    public void RestoreHability(){
+        _playerPowerFx = FindObjectOfType<PowerEffects>();
+    }
 }

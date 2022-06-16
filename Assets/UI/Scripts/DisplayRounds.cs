@@ -19,15 +19,21 @@ public class DisplayRounds : MonoBehaviour
 
     void DisplayPlayerRoundScore()
     {
-        int roundsWon = PlayerPrefs.GetInt("rounds_won_by_player");
-        if (roundsWon > 0)
+        if (PlayerPrefs.GetInt("br_mode") != 1)
         {
-            int count = 1;
-            while (count <= roundsWon)
+            int roundsWon = PlayerPrefs.GetInt("rounds_won_by_player");
+            if (roundsWon > 0)
             {
-                playerRounds[count - 1].color = Color.red;
-                count++;
+                int count = 1;
+                while (count <= roundsWon)
+                {
+                    playerRounds[count - 1].color = Color.red;
+                    count++;
+                }
             }
+        }
+        else {
+            this.gameObject.SetActive(false);
         }
     }
 }

@@ -21,4 +21,8 @@ public class SpinHealthBar : MonoBehaviour
     {
         slider.value = Convert.ToSingle(healthPlayer.ReturnSpinHealth());
     }
+
+    public void RestoreSpinHealth(){
+        healthPlayer = FindObjectOfType<PlayerHealth>();
+    }
 }

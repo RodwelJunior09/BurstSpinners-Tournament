@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class BRTeamManager : MonoBehaviour
 {
+    HealthBar _healthBar;
     EnemyAI[] _allEnemiesAI;
+    HabilityUI _habilityUI;
     PlayerHealth _playerHealth;
+    SpinHealthBar _spinHealthBar;
+    InicializeCamera _cameraComp;
 
-    int team_member = 0;
+    int team_member = 1;
     bool spawnEnemy = false;
     bool spawnedPlayer = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        _healthBar = FindObjectOfType<HealthBar>();
         _allEnemiesAI = FindObjectsOfType<EnemyAI>();
+        _habilityUI = FindObjectOfType<HabilityUI>();
         _playerHealth = FindObjectOfType<PlayerHealth>(); 
+        _spinHealthBar = FindObjectOfType<SpinHealthBar>();
+        _cameraComp = FindObjectOfType<InicializeCamera>();
     }
 
     private void Update() {
@@ -27,21 +35,46 @@ public class BRTeamManager : MonoBehaviour
 
     void EnemyChangeTeamMember(){
         _allEnemiesAI.ToList().ForEach(enemy => {
-            if (enemy.DoesEnemyStopped)
+            if (enemy != null)
             {
-                enemy.GetComponentInParent<EnemySpawner>().PutAnotherEnemyTeam();
-                Destroy(enemy.gameObject);
+                if (enemy.DoesEnemyStopped)
+                {
+                    enemy.GetComponentInParent<EnemySpawner>().PutAnotherEnemyTeam();
+                    Destroy(enemy.gameObject);
+                }
             }
         });
     }
 
     void PlayerChangeTeamMember(){
-        if (_playerHealth.ItStoppedSpinning)
+        if (_playerHealth != null)
         {
-            team_member += 1;
-            _playerHealth.gameObject.GetComponentInParent<PlayerSpawner>().SpawnTeamPlayer(team_member);
-            Destroy(_playerHealth.gameObject);
+            if (_playerHealth.ItStoppedSpinning)
+            {
+                team_member += 1;
+                _playerHealth.gameObject.GetComponentInParent<PlayerSpawner>().SpawnTeamPlayer(team_member);
+                Destroy(_playerHealth.gameObject);
+                RestorePlayerStats();
+                RestoreEnemyTarget();
+            }
         }
+    }
+
+    void RestoreEnemyTarget(){
+        _allEnemiesAI.ToList().ForEach(enemy => {
+            if (enemy != null)
+            {
+                enemy.SetPlayerEnemy();
+            }
+        });
+    }
+    
+    void RestorePlayerStats(){
+        _playerHealth = FindObjectOfType<PlayerHealth>();
+        _habilityUI.RestoreHability();
+        _cameraComp.ChangeLookUpCamera();
+        _healthBar.RestoreHealthBar();
+        _spinHealthBar.RestoreSpinHealth();
     }
     
 }

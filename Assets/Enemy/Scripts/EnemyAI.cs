@@ -66,6 +66,11 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(playerTransform.position);
     }
 
+    public void SetPlayerEnemy(){
+        player = FindObjectOfType<Player>();
+        playerTransform = player.transform;
+    }
+    
     public void RandomPowerAttack()
     {
         var randomNumber = Random.Range(1, 100);
