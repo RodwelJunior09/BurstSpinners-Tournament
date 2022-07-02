@@ -1,33 +1,37 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HabilityUI : MonoBehaviour
 {
-    Player player;
     Text _textComponent;
-    Button buttonComponent;
+    Button _activationBtn;
+    PowerEffects _playerPowerFx;
 
     // Local variables
-    float coolDownTime;
+    float coolDownTime = 0f;
+
+    private void OnEnable() {
+        _textComponent = GetComponentInChildren<Text>();
+    }
     
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
-        buttonComponent = GetComponent<Button>();
-        _textComponent = GetComponentInChildren<Text>();
+        _activationBtn = GetComponent<Button>();
+        _playerPowerFx = FindObjectOfType<PowerEffects>();
+        _activationBtn.onClick.AddListener(() => ActivateHability());
         DissapearCooldownText();
-        buttonComponent.onClick.AddListener(() => ActivateHability());
     }
 
     void ActivateHability()
     {
-        player.HabilityProcess();
+        _playerPowerFx.HabilityProcess();
     }
 
     void Update()
     {
-        if (player.IsPlayerOnCooldown())
+        if (_playerPowerFx.IsPlayerOnCooldown)
             AppearCoolDownText();
         else
             DissapearCooldownText();
@@ -36,7 +40,7 @@ public class HabilityUI : MonoBehaviour
     void DissapearCooldownText()
     {
         _textComponent.gameObject.SetActive(false);
-        coolDownTime = player.ReturnPowerCooldown();
+        coolDownTime = (float)_playerPowerFx.ReturnPowerCooldown;
     }
 
     void AppearCoolDownText()
@@ -47,5 +51,9 @@ public class HabilityUI : MonoBehaviour
             coolDownTime -= Time.deltaTime;
             _textComponent.text = $"{Mathf.FloorToInt(coolDownTime)}";
         }
+    }
+
+    public void RestoreHability(){
+        _playerPowerFx = FindObjectOfType<PowerEffects>();
     }
 }

@@ -22,15 +22,21 @@ public class DisplayEnemyRounds : MonoBehaviour
 
     void DisplayEnemyRoundWonScore()
     {
-        int roundsWon = PlayerPrefs.GetInt("rounds_won_by_enemy");
-        if (roundsWon > 0)
+        if (PlayerPrefs.GetInt("br_mode") != 1)
         {
-            int count = 1;
-            while (count <= roundsWon)
+            int roundsWon = PlayerPrefs.GetInt("rounds_won_by_enemy");
+            if (roundsWon > 0)
             {
-                enemyRounds[count - 1].color = Color.red;
-                count++;
+                int count = 1;
+                while (count <= roundsWon)
+                {
+                    enemyRounds[count - 1].color = Color.red;
+                    count++;
+                }
             }
+        }
+        else {
+            this.gameObject.SetActive(false);
         }
     }
 }

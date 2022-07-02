@@ -10,7 +10,6 @@ public class LoseCollider : MonoBehaviour
 
     private void Start()
     {
-        this.player = FindObjectOfType<Player>();
         this.enemyAI = FindObjectOfType<EnemyAI>();
         this.levelManager = FindObjectOfType<LevelManager>();
     }
@@ -22,8 +21,11 @@ public class LoseCollider : MonoBehaviour
             if (!objectCollided)
             {
                 objectCollided = true;
-                player.IncreaseAmountOfWins();
-                StartCoroutine(levelManager.TournamentManager());
+                if (PlayerPrefs.GetInt("br_mode") != 1)
+                {
+                    player.IncreaseAmountOfWins();
+                    StartCoroutine(levelManager.TournamentManager());
+                }
             }
         }
         else if (otherCollider.gameObject.GetComponent<Player>())
@@ -31,9 +33,18 @@ public class LoseCollider : MonoBehaviour
             if (!objectCollided)
             {
                 objectCollided = true;
-                enemyAI.IncreaseRoundWon();
-                StartCoroutine(levelManager.TournamentManager());
+                if (PlayerPrefs.GetInt("br_mode") != 1)
+                {
+                    enemyAI.IncreaseRoundWon();
+                    StartCoroutine(levelManager.TournamentManager());
+                }
+                else {
+                    otherCollider.gameObject.GetComponent<PlayerHealth>().SetToStopSpin(true); // Make the player spinner stop spinning when falling.
+                }
+                
             }
         }
+        if (PlayerPrefs.GetInt("br_mode") == 1)
+            objectCollided = false;
     }
 }

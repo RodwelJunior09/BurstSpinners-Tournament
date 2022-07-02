@@ -6,6 +6,9 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] GameObject[] allPlayers;
 
     GameObject playerSpawn;
+    GameObject[] teamSpawn;
+
+    int count_member = 1;
 
     private void Awake()
     {
@@ -15,7 +18,10 @@ public class PlayerSpawner : MonoBehaviour
 
     int GetPlayerChoice()
     {
-        return PlayerPrefs.GetInt("playerId");
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+            return PlayerPrefs.GetInt("playerId");
+        else 
+            return PlayerPrefs.GetInt($"team_member_{count_member}");
     }
 
     void SpawnPlayer()
@@ -24,11 +30,17 @@ public class PlayerSpawner : MonoBehaviour
         playerSpawn.transform.parent = transform;
     }
 
+    public void SpawnTeamPlayer(int count){
+        int member_id = PlayerPrefs.GetInt($"team_member_{count}");
+        playerSpawn = Instantiate(allPlayers[member_id], transform.position, transform.rotation);
+        playerSpawn.transform.parent = transform;
+    }
+
     void StopSpinning()
     {
         if (stopSpinCharacter)
         {
-            playerSpawn.GetComponent<Player>().stopSpinning = true;
+            playerSpawn.GetComponent<PlayerHealth>().SetToStopSpin(true);
             playerSpawn.GetComponent<Animator>().SetBool("IsStopping", true); // Decrease all the spin energy
         }
     }

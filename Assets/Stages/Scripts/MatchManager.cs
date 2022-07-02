@@ -15,8 +15,11 @@ public class MatchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerWonTheTournament();
-        PlayerWonSurvivalMode();
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+        {
+            PlayerWonTheTournament();
+            PlayerWonSurvivalMode();
+        }
     }
 
     void PlayerWonSurvivalMode(){
@@ -29,7 +32,7 @@ public class MatchManager : MonoBehaviour
 
     void PlayerWonTheTournament()
     {
-        if (PlayerPrefs.GetInt("player_won_match") >= 3 && PlayerPrefs.GetInt("survivor_mode") != 1)
+        if (PlayerPrefs.GetInt("player_won_match") >= 3 && PlayerPrefs.GetInt("tournament_mode") == 1)
         {
             StartCoroutine(levelManager.LoadWinScreen());
             PlayerPrefs.SetInt("player_won_match", 0);

@@ -7,6 +7,13 @@ public class EnemySpinHealthUI : MonoBehaviour
     EnemyAI enemyAI;
     Slider slider;
 
+    private void OnEnable() {
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+            GameObject.Find("BRSliderUI").SetActive(false);
+        else
+            GameObject.Find("EnemySpinningInfo").SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

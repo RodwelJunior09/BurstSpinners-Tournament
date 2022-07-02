@@ -5,22 +5,31 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private bool isPause;
+
     public void SetSurvivorMode() {
-        PlayerPrefs.SetInt("survivor_mode", 1);
+        if (!PlayerPrefs.HasKey("survivor_mode"))
+            PlayerPrefs.SetInt("survivor_mode", 1);
+    }
+
+    public void SetBRMode(){
+        if (!PlayerPrefs.HasKey("br_mode"))
+            PlayerPrefs.SetInt("br_mode", 1);
     }
 
     public void SetTournamentMode() {
-        PlayerPrefs.SetInt("survivor_mode", 0);
+        if (!PlayerPrefs.HasKey("tournament_mode"))
+            PlayerPrefs.SetInt("tournament_mode", 1);
     }
 
     public IEnumerator WinSurvivalMode(){
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("SurvivalWinScreen");
+        DeleteMatchData();
     }
 
     public IEnumerator LoadWinScreen()
     {
-        switch (PlayerPrefs.GetInt("tourmamentId"))
+        switch (PlayerPrefs.GetInt("tournamentId"))
         {
             case 1:
                 yield return new WaitForSeconds(2);
@@ -58,10 +67,24 @@ public class LevelManager : MonoBehaviour
     }
 
     void DeleteMatchData(){
-        PlayerPrefs.DeleteKey("tourmamentId");
+        PlayerPrefs.DeleteKey("enemyId");
+        PlayerPrefs.DeleteKey("br_mode");
+        PlayerPrefs.DeleteKey("tournamentId");
+        PlayerPrefs.DeleteKey("survivor_mode");
+        PlayerPrefs.DeleteKey("tournament_mode");
         PlayerPrefs.DeleteKey("player_won_match");
+        PlayerPrefs.DeleteKey("rounds_won_by_enemy");
+        PlayerPrefs.DeleteKey("rounds_won_by_player");
+    }
+
+    public void DeleteRoundData()
+    {
         PlayerPrefs.DeleteKey("rounds_won_by_player");
         PlayerPrefs.DeleteKey("rounds_won_by_enemy");
+    }
+
+    public void DeleteEnemyId(){
+        PlayerPrefs.DeleteKey("enemyId");
     }
     
     public void LoadTournament()
@@ -71,7 +94,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator TournamentManager()
     {
-        switch (PlayerPrefs.GetInt("tourmamentId"))
+        switch (PlayerPrefs.GetInt("tournamentId"))
         {
             case 1:
                 yield return new WaitForSeconds(3);

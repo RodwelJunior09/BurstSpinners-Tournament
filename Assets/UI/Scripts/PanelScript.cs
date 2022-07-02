@@ -27,8 +27,11 @@ public class PanelScript : MonoBehaviour
 
     void Update()
     {
-        PlayerWonRound();
-        PlayerLoseRound();
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+        {
+            PlayerWonRound();
+            PlayerLoseRound();
+        }
         PlayerPauseGame();
     }
 
@@ -46,7 +49,7 @@ public class PanelScript : MonoBehaviour
 
     void PlayerWonRound()
     {
-        if (player.ReturnRoundWin() == 1)
+        if (player.ReturnRoundWin == 1)
         {
             winLoseRoundTextPanel.SetActive(true);
         }

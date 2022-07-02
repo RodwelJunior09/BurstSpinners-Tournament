@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    PlayerSpawner playerSpawner;
     LevelManager levelManager;
     AdvertisementManager adsManager;
-
     [SerializeField] bool playerWin;
+    int player_team_count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         this.levelManager = FindObjectOfType<LevelManager>();
+        this.playerSpawner = FindObjectOfType<PlayerSpawner>();
         this.adsManager = FindObjectOfType<AdvertisementManager>();
     }
 
     private void Update()
     {
-        PlayerLoseMatch();
-        PlayerWinsMatch();
+        if (PlayerPrefs.GetInt("br_mode") != 1)
+        {
+            PlayerLoseMatch();
+            PlayerWinsMatch();
+        }
     }
 
     void PlayerWinsMatch()
@@ -37,38 +42,29 @@ public class RoundManager : MonoBehaviour
         var roundWonByOponent = PlayerPrefs.GetInt("rounds_won_by_enemy");
         if (roundWonByOponent >= 3)
         {
-            DeleteEnemyId();
-            DeleteRoundData();
+            levelManager.DeleteEnemyId();
+            levelManager.DeleteRoundData();
             StartCoroutine(levelManager.PlayerLoseScreen());
         }
         if (roundWonByOponent >= 2 && roundWonByOponent > roundWonByPlayer)
         {
-            DeleteEnemyId();
-            DeleteRoundData();
+            levelManager.DeleteEnemyId();
+            levelManager.DeleteRoundData();
             StartCoroutine(levelManager.PlayerLoseScreen());
         }
-    }
-
-    public void DeleteRoundData()
-    {
-        PlayerPrefs.DeleteKey("rounds_won_by_player");
-        PlayerPrefs.DeleteKey("rounds_won_by_enemy");
-    }
-
-    void DeleteEnemyId()
-    {
-        PlayerPrefs.DeleteKey("enemyId");
     }
 
     void LoadNextEnemy()
     {
         var nextEnemyId = PlayerPrefs.GetInt("enemyId") + 1;
         PlayerPrefs.SetInt("enemyId", nextEnemyId);
-        DeleteRoundData();
+        levelManager.DeleteRoundData();
         IncreaseMatch();
         StartCoroutine(LoadAdsWithTimer());
         levelManager.LoadTournament();
     }
+
+    // Make the necessary functions when the player looses an new team member appears, reset the UI IF NECESSARY
 
     IEnumerator LoadAdsWithTimer()
     {
