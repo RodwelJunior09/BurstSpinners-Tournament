@@ -51,7 +51,7 @@ Animator:
   m_GameObject: {fileID: 1699337002508922176}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: abc753e6fb042c6478a99a3c89b8e1dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4057a19fb559bf5459d37a84d4f843c6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &242629427221091001
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,11 +20,9 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void PutAnotherEnemyTeam(){
+        current_enemy_id++;
         if (current_enemy_id < GetEnemyCount)
-        {
-            current_enemy_id++;
             SpawnEnemy(current_enemy_id);
-        }
     }
 
     public int GetEnemyCount => _enemiesInTournament.Length;

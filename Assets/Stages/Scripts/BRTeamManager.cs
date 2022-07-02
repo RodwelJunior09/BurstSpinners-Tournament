@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BRTeamManager : MonoBehaviour
 {
+    LevelManager _lvlManager;
     HealthBar _healthBar;
     EnemyAI[] _allEnemiesAI;
     HabilityUI _habilityUI;
@@ -20,6 +21,7 @@ public class BRTeamManager : MonoBehaviour
         _healthBar = FindObjectOfType<HealthBar>();
         _allEnemiesAI = FindObjectsOfType<EnemyAI>();
         _habilityUI = FindObjectOfType<HabilityUI>();
+        _lvlManager = FindObjectOfType<LevelManager>();
         _playerHealth = FindObjectOfType<PlayerHealth>(); 
         _spinHealthBar = FindObjectOfType<SpinHealthBar>();
         _cameraComp = FindObjectOfType<InicializeCamera>();
@@ -29,6 +31,7 @@ public class BRTeamManager : MonoBehaviour
         if (PlayerPrefs.GetInt("br_mode") == 1)
         {
             EnemyChangeTeamMember();
+            AllEnemiesDown();
             PlayerChangeTeamMember();
         }
     }
@@ -41,6 +44,7 @@ public class BRTeamManager : MonoBehaviour
                 {
                     enemy.GetComponentInParent<EnemySpawner>().PutAnotherEnemyTeam();
                     Destroy(enemy.gameObject);
+                    _allEnemiesAI = FindObjectsOfType<EnemyAI>();
                 }
             }
         });
@@ -49,21 +53,29 @@ public class BRTeamManager : MonoBehaviour
     void PlayerChangeTeamMember(){
         if (_playerHealth != null)
         {
-            if (_playerHealth.ItStoppedSpinning)
+            if (_playerHealth.ItStoppedSpinning && team_member <= 3)
             {
                 team_member += 1;
-                _playerHealth.gameObject.GetComponentInParent<PlayerSpawner>().SpawnTeamPlayer(team_member);
-                Destroy(_playerHealth.gameObject);
-                RestorePlayerStats();
-                RestoreEnemyTarget();
+                if (team_member > 3)
+                    StartCoroutine(_lvlManager.PlayerLoseScreen());
+                else {
+                    _playerHealth.gameObject.GetComponentInParent<PlayerSpawner>().SpawnTeamPlayer(team_member);
+                    Destroy(_playerHealth.gameObject);
+                    RestorePlayerStats();
+                    RestoreEnemyTarget();
+                }
             }
         }
     }
 
+    void AllEnemiesDown(){
+        if (!FindObjectsOfType<EnemyAI>().Any())
+            StartCoroutine(_lvlManager.LoadWinScreen());
+    }
+
     void RestoreEnemyTarget(){
         _allEnemiesAI.ToList().ForEach(enemy => {
-            if (enemy != null)
-            {
+            if (enemy != null){
                 enemy.SetPlayerEnemy();
             }
         });

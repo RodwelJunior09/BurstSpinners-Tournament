@@ -27,12 +27,13 @@ public class EnemyAI : MonoBehaviour
     AudioSource _clashSoundFx;
     LevelManager levelManager;
     AudioSource _powerSoundFx;
-    Transform playerTransform;
+    Transform player_transform;
     ParticleSystem _powerEffect;
     AudioSource _deactivateSoundFx;
 
     private void Awake()
     {
+        this.player = FindObjectOfType<Player>();
         this.camera = FindObjectOfType<Camera>();
         this.agent = GetComponent<NavMeshAgent>();
     }
@@ -40,8 +41,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         this.animator = GetComponent<Animator>();
-        this.player = FindObjectOfType<Player>();
-        this.playerTransform = player.transform;
+        this.player_transform = player.transform;
         this._clashSoundFx = GetComponent<AudioSource>();
         this.levelManager = FindObjectOfType<LevelManager>();
         this._deactivateSoundFx = FindObjectOfType<AudioSource>();
@@ -63,12 +63,12 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        agent.SetDestination(playerTransform.position);
+        agent.SetDestination(player_transform.position);
     }
 
     public void SetPlayerEnemy(){
         player = FindObjectOfType<Player>();
-        playerTransform = player.transform;
+        player_transform = player.transform;
     }
     
     public void RandomPowerAttack()
